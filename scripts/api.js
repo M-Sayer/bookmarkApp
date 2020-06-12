@@ -31,8 +31,14 @@ const getBookmarks = function() {
     
 };
 
-// const createBookmark = function(title) {
-//   let newBkmk = JSON.stringify(title);
+const createBookmark = function(newBookmark) {
+  return fetch(`${BASE_URL}/bookmarks`, {
+    method : 'POST',
+    headers : {
+      'Content-Type' : 'application/json'
+    },
+    body : newBookmark
+  });
   
 //   return listApiFetch(`${BASE_URL}/bookmarks`, {
 //     method : 'POST',
@@ -45,11 +51,11 @@ const getBookmarks = function() {
 //   return bookmarkApiFetch(`${BASE_URL}/bookmarks/${id}`, {
 //     method : 'DELETE'
 //   });
-// };
+};
 
 export default {
   // bookmarkApiFetch,
   getBookmarks,
-  // createBookmark,
+  createBookmark,
   // deleteBookmark
 };

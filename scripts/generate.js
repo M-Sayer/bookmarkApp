@@ -29,12 +29,14 @@ const bookmarkList = function(){
 const newBookmarkHtml = function() {
   const newBkmkHtml = `<div class="new-bookmark">
   <p>Add New Bookmark:</p>
-  <form name="new-bookmark-form">
+  <form class="new-bookmark-form" id="new-bookmark-form">
     <input type="text" name="title" placeholder="Enter a title">
     <section>
       <input type="text" name="url" placeholder="URL">
     </section>
   
+    <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
+
     <section>
       <label for="rating">Rating:</label>
       <select name="rating" id="rating">
@@ -45,9 +47,6 @@ const newBookmarkHtml = function() {
         <option value="5">5</option>
       </select>
     </section>
-  
-    <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
-  
 
   <section>
     <button type="button" name="cancel-new-bkmk" class="cancel-new-bkmk">Cancel</button>

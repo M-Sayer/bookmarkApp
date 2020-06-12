@@ -1,10 +1,13 @@
 import state from './state.js';
+import api from './api.js';
 import generate from './generate.js';
+import index from './index.js';
 
 //  RENDER
 
 const render = function() {
   let bookmarks = [...state.bookmarks];
+  api.getBookmarks();
   if(!state.adding) {
     // generate HTML
     const bkmkListHtml = generate.bookmarkList();
@@ -34,17 +37,35 @@ const handleCancelClick = function() {
   });
 };
 
-
+const serializeForm = function() {
+  const newBkmkForm = document.getElementById('new-bookmark-form');
+  const formData = new FormData(newBkmkForm);
+  const newBkmkData = {};
+  formData.forEach((val, name) => newBkmkData[name] = val);
+  return JSON.stringify(newBkmkData);
+};
 
 const handleCreateSubmit = function() {
-  $('main').on('submit','.new-bookmark-form', event => {
+  $('main').on('submit','#new-bookmark-form', event => {
     event.preventDefault();
     console.log('submit btn works');
+    //  formdata
+    let newBookmark = serializeForm();
+    console.log(newBookmark);
+    //create api
+    api.createBookmark(newBookmark)
+      .then(res => res.json())
+      .then(newBkmk => {
+        state.addBookmark(newBkmk);
+        state.adding = !state.adding;
+        render();
+      })
+   
   });
-  //formdata
-  //create api
-  //toggle state.adding
-  //render
+  
+  
+  
+  
 
 };
 
