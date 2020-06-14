@@ -1,18 +1,16 @@
 import state from './state.js';
 import api from './api.js';
 import generate from './generate.js';
-import index from './index.js';
 
-//  RENDER
+//    RENDER
 
 const render = function() {
-  let bookmarks = [...state.bookmarks];
-  api.getBookmarks();
+  // if(state.filter > 0) {
+  //   $('#filter-select').val('3');
+  // };
   if(!state.adding) {
-    // generate HTML
-    const bkmkListHtml = generate.bookmarkList();
-    // insert that HTML into the DOM
-    $('main').html(bkmkListHtml);
+    const listHtml = generate.bookmarkList();
+    $('main').html(listHtml);
   } else if(state.adding) {
     const newBkmkHtml = generate.newBookmarkHtml();
     $('main').html(newBkmkHtml);
@@ -20,13 +18,22 @@ const render = function() {
   
 };
 
-//  HANDLER FUNCTIONS
+//    HANDLER FUNCTIONS
+
+const handleFilterChange = function() {
+  $('main').on('change', '#filter-select', event => {
+    state.filter = $('option:selected').val();
+    console.log(state.filter);
+    render();
+  });
+};
 
 const handleNewBkmkClick = function() {
   $('main').on('click', '.new-bkmk', event => {
-    console.log('newBkmk btn works');
+    state.error = null;
+    // console.log('newBkmk btn works');
     state.adding = !state.adding;
-    generate.newBookmarkHtml();
+    render();
   });
 };
 
@@ -48,33 +55,67 @@ const serializeForm = function() {
 const handleCreateSubmit = function() {
   $('main').on('submit','#new-bookmark-form', event => {
     event.preventDefault();
-    console.log('submit btn works');
+    // console.log('submit btn works');
     //  formdata
     let newBookmark = serializeForm();
-    console.log(newBookmark);
+    // console.log(newBookmark);
     //create api
     api.createBookmark(newBookmark)
-      .then(res => res.json())
       .then(newBkmk => {
         state.addBookmark(newBkmk);
         state.adding = !state.adding;
         render();
       })
-   
+      .catch((error) => {
+        // console.log(error);
+        state.setError(error.message);
+        render();
+      });
   });
-  
-  
-  
-  
+};
 
+const getBkmkId = function(item) {
+  return $(item)
+    .closest('li')
+    .data('bkmk-id');
+};
+
+const handleExpandClick = function() {
+  $('main').on('click','.bookmark', event => {
+    const id = getBkmkId(event.currentTarget);
+    const bkmk = state.findById(id);
+    // console.log(bkmk);
+    bkmk.expand = !bkmk.expand;
+    render();
+  });
+};
+
+const handleDeleteClick = function() {
+  $('main').on('click', '.delete-bkmk', event => {
+    event.preventDefault();
+    // console.log('delete btn works');
+    const id = getBkmkId(event.currentTarget);
+    // console.log(id);
+    api.deleteBookmark(id)
+      .then(() => {
+        state.deleteBookmark(id);
+        render();
+      })
+      .catch((error) => {
+        state.setError(error.message);
+        render();
+      });
+  });
 };
 
 function bindEventListeners() {
   handleNewBkmkClick();
   handleCancelClick();
   handleCreateSubmit();
+  handleExpandClick();
+  handleFilterChange();
+  handleDeleteClick();
 };
-
 
 export default {
   render,

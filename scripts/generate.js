@@ -5,62 +5,80 @@ const createBookmarkListHtml = function(bkmkListHtml) {
   <div class="bookmarks">
     <button type="button" name="new-bkmk" class="new-bkmk">New Bookmark</button>
 
-    <button type="button" name="Filter">Filter</button>
+    
+    <select name="filter" id="filter-select">
+      <option value="">Filter By Rating</option>  
+      <option value="1">1+</option>
+      <option value="2">2+</option>
+      <option value="3">3+</option>
+      <option value="4">4+</option>
+      <option value="5">5</option>
+    </select>
 
     <ul class="bookmarks-list">
       ${bkmkListHtml}
     </ul>
-  </div>
-  `;
-  $('main').html(bookmarkHtml);
+  </div>`;
+  return bookmarkHtml;
 };
 
 const bookmarkList = function(){
   let bkmkListHtml = ``;
   for(let i = 0; i < state.bookmarks.length; i++) {
-    bkmkListHtml += `<li>
+    let expandedBkmk = ``;
+    if(state.bookmarks[i].expand) {
+      expandedBkmk = `<div>${state.bookmarks[i].desc}</div>
+      <a class="button" href="${state.bookmarks[i].url}" target="_blank">Visit Site</a>
+      <button class="delete-bkmk">Delete</button>`;
+    }
+    if(state.bookmarks[i].rating >= state.filter) {
+      bkmkListHtml += `<li class="bookmark" data-bkmk-id="${state.bookmarks[i].id}">
       <span>${state.bookmarks[i].title}</span>
       <span>${state.bookmarks[i].rating}</span>
+      ${expandedBkmk}
       </li>`;
+    } 
   }
-  createBookmarkListHtml(bkmkListHtml);
+  return createBookmarkListHtml(bkmkListHtml);
 };
 
 const newBookmarkHtml = function() {
-  const newBkmkHtml = `<div class="new-bookmark">
-  <p>Add New Bookmark:</p>
-  <form class="new-bookmark-form" id="new-bookmark-form">
-    <input type="text" name="title" placeholder="Enter a title">
-    <section>
-      <input type="text" name="url" placeholder="URL">
-    </section>
-  
-    <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
+  let errorHtml = ``;
+  if(state.error) {
+    errorHtml = `<div class="error">${state.error}</div>`;
+  }
+  const newBkmkHtml = `
+  <div class="new-bookmark">
+    <p>Add New Bookmark:</p>
+    <form class="new-bookmark-form" id="new-bookmark-form">
+      <input required type="text" name="title" placeholder="Enter a title">
+      <section>
+        <input required type="text" name="url" placeholder="URL">
+      </section>
+    
+      <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
 
-    <section>
-      <label for="rating">Rating:</label>
-      <select name="rating" id="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-    </section>
+      <section>
+        <label class="rating-label" for="rating">Rating:</label>
+        <select name="rating" id="rating">  
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </section>
 
-  <section>
-    <button type="button" name="cancel-new-bkmk" class="cancel-new-bkmk">Cancel</button>
-
-    <input type="submit" value="Create" class="create-new-bkmk">
-  </section>
-
-  </form>
-  
-</div>`;
-$('main').html(newBkmkHtml);
+      ${errorHtml}
+      
+      <section>
+        <button type="button" name="cancel-new-bkmk" class="cancel-new-bkmk">Cancel</button>
+        <input type="submit" value="Create" class="create-new-bkmk">
+      </section>
+    </form>
+  </div>`;
+  return newBkmkHtml;
 };
-
-
 
 export default {
   bookmarkList,
