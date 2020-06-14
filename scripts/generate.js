@@ -40,10 +40,10 @@ const bookmarkList = function(){
     
     if(state.bookmarks[i].rating >= state.filter) {
       bkmkListHtml += `<li class="bookmark" data-bkmk-id="${state.bookmarks[i].id}">
-      <span id="title">${state.bookmarks[i].title}</span>
-      <span class="material-icons" id="star-rating">
+      <div id="title">${state.bookmarks[i].title}</div>
+      <div class="material-icons" id="star-rating">
     ${starIcon}
-    </span>
+    </div>
       ${expandedBkmk}
       </li>`;
     } 
@@ -66,8 +66,8 @@ const newBookmarkHtml = function() {
       <input required type="text" name="url" placeholder="URL">
       <section>
       </section>
-      <input id="desc-input" type="text" name="desc" placeholder="Enter a Desription (Optional)">
-      <textarea id="desc-textarea">Enter A Description</textarea>
+ 
+      <textarea name="desc" id="desc-textarea" placeholder="Enter a Description\n(Optional)"></textarea>
 
       <section>
         <label class="rating-label" for="rating">Rating:</label>

@@ -15,52 +15,54 @@ body, main, form, textarea {
 }
 
 h1 {
-  color: #000
+  color: #FFF;
 }
 
 body {
-  background-color: #FFF;
+  /* background-color: #FFF; */
+  background-color: #3E3F35;
   color: #FFF;
   justify-content: center;
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
-.bookmarks {
-  /* max-width: 50%; */
+ul {
+  border-top: solid 1px #FFF;
+  list-style: none;
 }
 
 li {
   color: #FFF;
-  margin: 5px 20px;
+  margin: 2px 0px;
+  border-bottom: solid 1px #FFF;
   background: #3E3F35;
-  padding: 10px;
+  padding: 5px 0 0;
   font-size: 25px;
 }
 
-#title {
-  vertical-align: middle;
-}
-
 #star-rating {
-float: right;
-width: 75px;
+/* float: right; */
+/* width: 75px; */
 font-size: 16px;
-margin-top: 10px;
+color: #F1B60E;
+margin-top: 0;
+
 }
 
 #expanded {
   font-size: 18px;
 }
 
-#desc-input {
-  height: 150px;
-}
-
 #desc-textarea {
   font-family: 'Teko', sans-serif;
+  /* text-align: center;
+  width: 250px; */
+  max-width: 80%;
   text-align: center;
-  width: 250px;
-  
+  margin: 5px auto;
+  padding: 0 82px;
 }
 
 h1, button, form, input, p, ul, select {
@@ -74,7 +76,7 @@ input[type=submit] {
   background: #F1B60E;
   border-style: none;
   border-radius: 3px;
-  padding: 1px 6px;
+  padding: 1px 13px;
 
 }
 
@@ -98,7 +100,7 @@ input[type=text] {
   padding: 0 80px;
   
 }
-
+/* rating-select menu */
 #rating {
   margin-left: 8px;
   font-size: 14px;
@@ -114,7 +116,7 @@ input[type=text] {
 button {
   font-size: 18px;
   margin: 5px;
-  padding: 1px 5px;
+  padding: 1px 13px;
   background: #F1B60E;
   border-style: none;
   border-radius: 3px;
@@ -127,7 +129,7 @@ a {
 }
 /* link styled as button */
 .button {
-  font-size: 18px;
+  /* font-size: 18px; */
   display: inline-block;
   padding: 1px 10px;
   text-align: center;
@@ -146,4 +148,78 @@ select {
   border-style: none;
   background: #F1B60E;
   border-radius: 3px;
+}
+
+@media (min-width: 700px) {
+
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 50px;
+  }
+
+  li {
+    font-size: 35px;
+  }
+
+  button, a, select, p {
+    font-size: 25px;
+  }
+
+  #star-rating, #expanded {
+    font-size: 25px;
+  }
+
+  input[type=text] {
+    max-width: 80%;
+    text-align: center;
+    margin: 5px auto;
+    padding: 5px 80px;
+    font-size: 18px;
+  }
+
+  #desc-textarea {
+    font-family: 'Teko', sans-serif;
+    /* text-align: center;
+    width: 250px; */
+    max-width: 80%;
+    text-align: center;
+    margin: 5px auto;
+    padding: 15px 83px;
+    font-size: 18px;
+  }
+
+  .rating-label {
+    font-size: 25px;
+  }
+
+  input[type=submit] {
+    font-size: 25px;
+    margin: 5px;
+    padding: 10px 5px;
+    background: #F1B60E;
+    border-style: none;
+    border-radius: 3px;
+    padding: 1px 26px;
+  }
+
+  #rating {
+    margin: 10px;
+    font-size: 18px;
+    padding: 0 20px
+  }
+
+  button {
+    margin: 10px;
+    padding: 1px 25px;
+  }
+
+  #filter-select {
+    margin: 10px;
+    padding: 0 16px;
+  }
+
 }
