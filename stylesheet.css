@@ -7,11 +7,15 @@
 }
 
 
-body, main, form {
+body, main, form, textarea {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   /* max-width: 50%; */
+}
+
+h1 {
+  color: #000
 }
 
 body {
@@ -25,16 +29,38 @@ body {
   /* max-width: 50%; */
 }
 
-ul {
-  /* background: #3E3F35; */
-}
-
 li {
   color: #FFF;
   margin: 5px 20px;
   background: #3E3F35;
   padding: 10px;
   font-size: 25px;
+}
+
+#title {
+  vertical-align: middle;
+}
+
+#star-rating {
+float: right;
+width: 75px;
+font-size: 16px;
+margin-top: 10px;
+}
+
+#expanded {
+  font-size: 18px;
+}
+
+#desc-input {
+  height: 150px;
+}
+
+#desc-textarea {
+  font-family: 'Teko', sans-serif;
+  text-align: center;
+  width: 250px;
+  
 }
 
 h1, button, form, input, p, ul, select {
@@ -60,6 +86,9 @@ input[type=submit] {
 
 .new-bookmark-form {
   /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input[type=text] {

@@ -26,15 +26,24 @@ const bookmarkList = function(){
   let bkmkListHtml = ``;
   for(let i = 0; i < state.bookmarks.length; i++) {
     let expandedBkmk = ``;
+    let starIcon = `star_border`;
+
+    if(state.bookmarks[i].rating) {
+      starIcon = starIcon.repeat(state.bookmarks[i].rating);
+    }  
+   
     if(state.bookmarks[i].expand) {
-      expandedBkmk = `<div>${state.bookmarks[i].desc}</div>
+      expandedBkmk = `<div id="expanded">${state.bookmarks[i].desc}</div>
       <a class="button" href="${state.bookmarks[i].url}" target="_blank">Visit Site</a>
       <button class="delete-bkmk">Delete</button>`;
     }
+    
     if(state.bookmarks[i].rating >= state.filter) {
       bkmkListHtml += `<li class="bookmark" data-bkmk-id="${state.bookmarks[i].id}">
-      <span>${state.bookmarks[i].title}</span>
-      <span>${state.bookmarks[i].rating}</span>
+      <span id="title">${state.bookmarks[i].title}</span>
+      <span class="material-icons" id="star-rating">
+    ${starIcon}
+    </span>
       ${expandedBkmk}
       </li>`;
     } 
@@ -57,7 +66,8 @@ const newBookmarkHtml = function() {
       <input required type="text" name="url" placeholder="URL">
       <section>
       </section>
-      <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
+      <input id="desc-input" type="text" name="desc" placeholder="Enter a Desription (Optional)">
+      <textarea id="desc-textarea">Enter A Description</textarea>
 
       <section>
         <label class="rating-label" for="rating">Rating:</label>
