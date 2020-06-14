@@ -34,6 +34,7 @@ li {
   margin: 5px 20px;
   background: #3E3F35;
   padding: 10px;
+  font-size: 25px;
 }
 
 h1, button, form, input, p, ul, select {
@@ -41,36 +42,65 @@ h1, button, form, input, p, ul, select {
 }
 
 input[type=submit] {
-  font-size: 14px;
-  margin: 0;
+  font-size: 18px;
+  margin: 5px;
   padding: 0 5px;
+  background: #F1B60E;
+  border-style: none;
+  border-radius: 3px;
+  padding: 1px 6px;
+
+}
+
+.new-bookmark {
+  background: #3E3F35;
+  text-align: center;
+  /* display: block; */
+}
+
+.new-bookmark-form {
+  /* display: inline-block; */
+}
+
+input[type=text] {
+  max-width: 80%;
+  text-align: center;
+  margin: 5px auto;
+  padding: 0 80px;
+  
+}
+
+#rating {
+  margin-left: 8px;
+  font-size: 14px;
 }
 
 .rating-label {
+  color: #FFF;
   margin-top: 15px;
   padding-top: 15px;
  
 }
 
 button {
-  font-size: 14px;
+  font-size: 18px;
   margin: 5px;
-  padding: 0px 5px;
+  padding: 1px 5px;
   background: #F1B60E;
   border-style: none;
   border-radius: 3px;
 }
 
 a {
-  font-size: 14px;
+  font-size: 18px;
   margin: 5px;
  
 }
 /* link styled as button */
 .button {
-  font-size: 14px;
+  font-size: 18px;
   display: inline-block;
-  padding: 0px 10px;
+  padding: 1px 10px;
   text-align: center;
   text-decoration: none;
   color: #000;
@@ -81,9 +111,9 @@ a {
 }
 
 select {
-  font-size: 14;
+  font-size: 18px;
   margin: 5px;
-  padding: 0;
+  padding: 0 3px;
   border-style: none;
   background: #F1B60E;
   border-radius: 3px;

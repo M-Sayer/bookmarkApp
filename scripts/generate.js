@@ -53,9 +53,10 @@ const newBookmarkHtml = function() {
     <form class="new-bookmark-form" id="new-bookmark-form">
       <input required type="text" name="title" placeholder="Enter a title">
       <section>
-        <input required type="text" name="url" placeholder="URL">
       </section>
-    
+      <input required type="text" name="url" placeholder="URL">
+      <section>
+      </section>
       <input type="text" name="desc" placeholder="Enter a Desription (Optional)">
 
       <section>
