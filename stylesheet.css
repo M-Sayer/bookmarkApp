@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap');
 
+/*    MOBILE FIRST */
+
 * {
   margin: 0;
   padding: 0;
   display: border-box;
 }
 
+/*    BODY STYLING */
 
 body, main, form, textarea {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* max-width: 50%; */
-}
-
-h1 {
-  color: #FFF;
 }
 
 body {
@@ -27,6 +24,17 @@ body {
   width: 80%;
   margin: 0 auto;
 }
+
+/*    FONT STYLING */
+h1, button, form, input, p, ul, select {
+  font-family: 'Teko', sans-serif;;
+}
+
+h1 {
+color: #FFF;
+}
+
+/*    LIST STYLING */
 
 ul {
   border-top: solid 1px #FFF;
@@ -42,31 +50,62 @@ li {
   font-size: 25px;
 }
 
-#star-rating {
-/* float: right; */
-/* width: 75px; */
-font-size: 16px;
-color: #F1B60E;
-margin-top: 0;
-
-}
-
 #expanded {
   font-size: 18px;
 }
 
+/*    BUTTON STYLING */
+
+#star-rating {
+  font-size: 16px;
+  color: #F1B60E;
+  margin-top: 0;
+}
+
+button {
+  font-size: 18px;
+  margin: 5px;
+  padding: 1px 13px;
+  background: #F1B60E;
+  border-style: none;
+  border-radius: 3px;
+}
+  
+a {
+  font-size: 18px;
+  margin: 5px;
+  
+}
+
+/* link styled as button */
+.button {
+  display: inline-block;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  background-color: #F1B60E;
+  border-radius: 3px;
+  outline: none;
+}
+
+select {
+  font-size: 18px;
+  margin: 5px;
+  padding: 0 3px;
+  border-style: none;
+  background: #F1B60E;
+  border-radius: 3px;
+}
+
+/*    FORM STYLING */
+
 #desc-textarea {
   font-family: 'Teko', sans-serif;
-  /* text-align: center;
-  width: 250px; */
   max-width: 80%;
   text-align: center;
   margin: 5px auto;
   padding: 0 82px;
-}
-
-h1, button, form, input, p, ul, select {
-  font-family: 'Teko', sans-serif;;
 }
 
 input[type=submit] {
@@ -83,11 +122,9 @@ input[type=submit] {
 .new-bookmark {
   background: #3E3F35;
   text-align: center;
-  /* display: block; */
 }
 
 .new-bookmark-form {
-  /* display: inline-block; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,116 +147,90 @@ input[type=text] {
   color: #FFF;
   margin-top: 15px;
   padding-top: 15px;
- 
 }
 
-button {
-  font-size: 18px;
-  margin: 5px;
-  padding: 1px 13px;
-  background: #F1B60E;
-  border-style: none;
-  border-radius: 3px;
-}
-
-a {
-  font-size: 18px;
-  margin: 5px;
- 
-}
-/* link styled as button */
-.button {
-  /* font-size: 18px; */
-  display: inline-block;
-  padding: 1px 10px;
-  text-align: center;
-  text-decoration: none;
-  color: #000;
-  background-color: #F1B60E;
-  border-radius: 3px;
-  outline: none;
-  text
-}
-
-select {
-  font-size: 18px;
-  margin: 5px;
-  padding: 0 3px;
-  border-style: none;
-  background: #F1B60E;
-  border-radius: 3px;
-}
+/*    LARGE SCREEN STYLING */
 
 @media (min-width: 700px) {
 
-  body {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 50px;
-  }
+/*    BODY STYLING */
 
-  li {
-    font-size: 35px;
-  }
+body {
+  width: 80%;
+  margin: 0 auto;
+}
 
-  button, a, select, p {
-    font-size: 25px;
-  }
+/*    TEXT STYLING */
 
-  #star-rating, #expanded {
-    font-size: 25px;
-  }
+h1 {
+  font-size: 50px;
+}
 
-  input[type=text] {
-    max-width: 80%;
-    text-align: center;
-    margin: 5px auto;
-    padding: 5px 80px;
-    font-size: 18px;
-  }
+/*    LIST STYLING */
 
-  #desc-textarea {
-    font-family: 'Teko', sans-serif;
-    /* text-align: center;
-    width: 250px; */
-    max-width: 80%;
-    text-align: center;
-    margin: 5px auto;
-    padding: 15px 83px;
-    font-size: 18px;
-  }
+li {
+  font-size: 35px;
+}
 
-  .rating-label {
-    font-size: 25px;
-  }
+/*    BUTTON STYLING */
 
-  input[type=submit] {
-    font-size: 25px;
-    margin: 5px;
-    padding: 10px 5px;
-    background: #F1B60E;
-    border-style: none;
-    border-radius: 3px;
-    padding: 1px 26px;
-  }
+button, a, select, p {
+  font-size: 25px;
+}
 
-  #rating {
-    margin: 10px;
-    font-size: 18px;
-    padding: 0 20px
-  }
+#star-rating, #expanded {
+  font-size: 25px;
+}
 
-  button {
-    margin: 10px;
-    padding: 1px 25px;
-  }
+#rating {
+  margin: 10px;
+  font-size: 18px;
+  padding: 0 20px
+}
 
-  #filter-select {
-    margin: 10px;
-    padding: 0 16px;
-  }
+button {
+  margin: 10px;
+  padding: 1px 25px;
+}
+
+#filter-select {
+  margin: 10px;
+  padding: 0 16px;
+}
+
+/*    FORM STYLING */
+
+input[type=text] {
+  max-width: 80%;
+  text-align: center;
+  margin: 5px auto;
+  padding: 5px 80px;
+  font-size: 18px;
+}
+
+#desc-textarea {
+  font-family: 'Teko', sans-serif;
+  /* text-align: center;
+  width: 250px; */
+  max-width: 80%;
+  text-align: center;
+  margin: 5px auto;
+  padding: 15px 83px;
+  font-size: 18px;
+}
+
+.rating-label {
+  font-size: 25px;
+}
+
+input[type=submit] {
+  font-size: 25px;
+  margin: 5px;
+  padding: 10px 5px;
+  background: #F1B60E;
+  border-style: none;
+  border-radius: 3px;
+  padding: 1px 26px;
+}
 
 }

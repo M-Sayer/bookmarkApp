@@ -4,7 +4,6 @@ const createBookmarkListHtml = function(bkmkListHtml) {
   const bookmarkHtml = `
   <div class="bookmarks">
     <button type="button" name="new-bkmk" class="new-bkmk">New Bookmark</button>
-
     
     <select name="filter" id="filter-select" aria-label="Filter By Rating">
       <option value="">Filter By Rating</option>  

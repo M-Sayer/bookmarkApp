@@ -14,7 +14,3 @@ const main = function() {
 };
 
 $(main);
-
-export default {
-  main
-};

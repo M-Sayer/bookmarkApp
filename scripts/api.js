@@ -51,9 +51,7 @@ const deleteBookmark = function(id) {
 // };
 
 export default {
-  // bookmarkApiFetch,
   getBookmarks,
   createBookmark,
-  // updateBookmark
   deleteBookmark
 };

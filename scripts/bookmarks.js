@@ -5,9 +5,6 @@ import generate from './generate.js';
 //    RENDER
 
 const render = function() {
-  // if(state.filter > 0) {
-  //   $('#filter-select').val('3');
-  // };
   if(!state.adding) {
     const listHtml = generate.bookmarkList();
     $('main').html(listHtml);
@@ -15,7 +12,6 @@ const render = function() {
     const newBkmkHtml = generate.newBookmarkHtml();
     $('main').html(newBkmkHtml);
   }
-  
 };
 
 //    HANDLER FUNCTIONS
@@ -23,7 +19,7 @@ const render = function() {
 const handleFilterChange = function() {
   $('main').on('change', '#filter-select', event => {
     state.filter = $('option:selected').val();
-    console.log(state.filter);
+    // console.log(state.filter);
     render();
   });
 };
@@ -31,6 +27,7 @@ const handleFilterChange = function() {
 const handleNewBkmkClick = function() {
   $('main').on('click', '.new-bkmk', event => {
     state.error = null;
+    state.filter = 1;
     // console.log('newBkmk btn works');
     state.adding = !state.adding;
     render();
@@ -56,10 +53,10 @@ const handleCreateSubmit = function() {
   $('main').on('submit','#new-bookmark-form', event => {
     event.preventDefault();
     // console.log('submit btn works');
-    //  formdata
+    //    formdata
     let newBookmark = serializeForm();
     // console.log(newBookmark);
-    //create api
+    //    create api
     api.createBookmark(newBookmark)
       .then(newBkmk => {
         state.addBookmark(newBkmk);
